@@ -28,15 +28,16 @@ async def on_member_join(member):
     )
 
 @client.event
-async def on_message(message)
-    if 'roll-the-dice' in message.content.lower() and len(names) = 5:
+async def on_message(message):
+    if 'roll-the-dice' in message.content.lower():
         message_string = message.content.lower()
         names = message_string.split()
         names.remove('roll-the-dice')
-        lanes_returned = rls(names)
-        await message.channel.send(lanes_returned)
-    if len(names) < 5
-        print("hi")
+        if len(names) == 5:
+            lanes_returned = rls(names)
+            await message.channel.send(lanes_returned)
+        else:
+            await message.channel.send("hi")
 
 def rls(names):
     lanes = ['Top','ADC','Support','Jungle','Mid']
