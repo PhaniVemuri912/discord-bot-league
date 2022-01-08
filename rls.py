@@ -29,12 +29,16 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-    if message.content.lower() == 'roll-the-dice':
-        lanes_returned = rls()
+    if 'roll-the-dice' in message.content.lower():
+        message_string = message.content.lower()
+        names = message_string.split()
+        names.remove('roll-the-dice')
+        lanes_returned = rls(names)
         await message.channel.send(lanes_returned)
 
-def rls():
+def rls(names):
     lanes = ['Top','ADC','Support','Jungle','Mid']
+    name_and_lanes = []
     i = 5
     selected_lanes = []
     while i > 0:
@@ -43,9 +47,10 @@ def rls():
         else:
             randselection = 0
         selected_lanes.append(lanes[randselection])
+        name_and_lanes.append(names[i-1]+"-"+lanes[randselection])
         lanes.remove(lanes[randselection])
         i = i-1
-    return selected_lanes
+    return name_and_lanes
 
 client.run(TOKEN)
 
