@@ -40,16 +40,18 @@ def rls(names):
     lanes = ['Top','ADC','Support','Jungle','Mid']
     name_and_lanes = []
     i = 0
+    j = 5
     selected_lanes = []
     while i <= 4:
         if len(lanes) > 1:
-            randselection = random.randint(0,i+1)
+            randselection = random.randint(0,j-1)
         else:
             randselection = 0
         selected_lanes.append(lanes[randselection])
-        name_and_lanes.append(names[i+1]+"-"+lanes[randselection])
+        name_and_lanes.append(names[i]+"-"+lanes[randselection])
         lanes.remove(lanes[randselection])
         i = i+1
+        j = j-1
     return name_and_lanes
 
 client.run(TOKEN)
