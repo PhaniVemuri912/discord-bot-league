@@ -39,17 +39,17 @@ async def on_message(message):
 def rls(names):
     lanes = ['Top','ADC','Support','Jungle','Mid']
     name_and_lanes = []
-    i = 5
+    i = 0
     selected_lanes = []
-    while i > 0:
+    while i <= 4:
         if len(lanes) > 1:
-            randselection = random.randint(0,i-1)
+            randselection = random.randint(0,i+1)
         else:
             randselection = 0
         selected_lanes.append(lanes[randselection])
-        name_and_lanes.append(names[i-1]+"-"+lanes[randselection])
+        name_and_lanes.append(names[i+1]+"-"+lanes[randselection])
         lanes.remove(lanes[randselection])
-        i = i-1
+        i = i+1
     return name_and_lanes
 
 client.run(TOKEN)
