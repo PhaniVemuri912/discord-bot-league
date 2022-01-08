@@ -29,10 +29,10 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
-    if 'roll-the-dice' in message.content.lower():
+    if '#roll' in message.content.lower():
         message_string = message.content
         names = message_string.split()
-        names.remove('roll-the-dice')
+        names.remove('#roll')
         if len(names) < 5:
             new_no_names = 5 - len(names)
             while new_no_names > 0:
